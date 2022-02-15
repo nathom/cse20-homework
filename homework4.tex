@@ -1,0 +1,159 @@
+\documentclass{article}
+\usepackage{amsmath,amsfonts}
+\newcommand{\R}{\mathbb{R}}
+\newcommand*\xor{\oplus}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\title{Homework 4}
+\author{
+	Nathaniel Thomas\\
+	\texttt{A17069898}
+}
+\begin{document}
+\maketitle
+\begin{enumerate}
+	\item \begin{enumerate}
+		      \item $$
+			            \forall x \in \Q (R(x))
+		            $$
+
+		      \item $$
+			            \exists x (F(x))
+		            $$
+
+		      \item $$
+			            \forall x \in \Z (\lnot A(x))
+		            $$
+
+		      \item $$
+			            \forall y \in \Z (M(0,y))
+		            $$
+
+		      \item $$
+			            \forall x (BM(x) \land BE(x))
+		            $$
+
+		      \item $$
+			            \exists x \in \R (0 < x < 2 \land T(x))
+		            $$
+
+		      \item $$
+			            \forall x \in \Z (Z(x^2))
+		            $$
+
+		      \item $$
+			            \forall x \in \Z (\lnot N(x^2))
+		            $$
+
+		      \item $$
+			            \exists x \in \R (\lnot Q(x))
+		            $$
+
+		      \item $$
+			            (\forall x \in \R)(\exists y)(Z(y) \land LTE(y,x) \land LT(x, y+1))
+		            $$
+	      \end{enumerate}
+
+	\item \begin{enumerate}
+		      \item \begin{enumerate}
+			            \item True
+			            \item False. Let $x = 1$. By the definition of $\Z^+$, there is no
+			                  element that is less than 1.
+			            \item True
+			            \item True
+		            \end{enumerate}
+		      \item \begin{enumerate}
+			            \item False. Let $x=2$ and $y=3$. By the definition of $\Z$, there is
+			                  no element $z$ such that $x < z < y$. This means the proposition
+			                  will be $(T \to F) \equiv F$, so the statement is false.
+			            \item True
+			            \item True
+			            \item True
+		            \end{enumerate}
+		      \item \begin{enumerate}
+			            \item True
+			            \item True
+			            \item True
+			            \item True
+		            \end{enumerate}
+		      \item \begin{enumerate}
+			            \item False. Let $x=2$. There is no $y$ in $\Z^+$ such that $y^2=2$
+			                  because $\sqrt{2} \notin \Z$.
+			            \item False. Let $x = -\sqrt 2$. This implies that $(x = y^2)$ is
+			                  false because there does not exist an $n \in \R$ such that $n^2$
+			                  is negative, by the definition of squaring. Since
+			                  $\R - \Q \subseteq \R$, the statement is false.
+			            \item False. Let $x = -1$. This implies that $(x = y^2)$ is
+			                  false because there does not exist an $n \in \R$ such that $n^2$
+			                  is negative, by the definition of squaring. This means the
+			                  statement is false.
+			            \item True.
+		            \end{enumerate}
+	      \end{enumerate}
+	\item \begin{enumerate}
+		      \item Given functions $f$ and $g$, and positive integers $n$ and $k$,
+		            $f(n)$ will be less than a real-numbered constant times
+		            $g(n)$ if $n$ is greater or equal to a lower bound $k$.
+
+		      \item $$
+			            \lnot O(f,g) = (\forall C \in \R^+)(\forall k \in Z^+)(
+			            \exists n \in Z^+) (n \ge k \land f(n) > Cg(n))
+		            $$
+
+		      \item Let $C = 1, k = 4$. We can choose $n = 5$. This means $n \ge k$ is
+		            True, and $f(n) = 64 \le 1 \cdot g(n) = 64$, so $f(n) \le Cg(n)$ is
+		            satisfied. This means the statement $(n \ge k \to f(n) \le C g(n))$
+		            is equivalent to $(T \to T) \equiv T$.
+
+		      \item There exists a function $f$ in $V$ for every function $g$ in $V$
+		            such that $f(n)$ is bounded by $Cg(n)$ for all $n \ge$
+		            a positive integer $k$, with $n$ being a positive integer
+		            and $C$ being a real number.
+
+		            Negation:
+
+		            $$
+			            (\forall f \in V)(\exists g \in V) (\lnot O(f,g))
+		            $$
+
+		      \item For all functions $f$ and $g$ in $V$, $C g(n)$ is an upper bound
+		            for $f(n)$ if and only if $Cf(n)$ is a lower bound for $g(n)$ for
+		            all $n$ greater than a lower bound $k$, with $n,k$ being positive
+		            integers and $C$ being a real number.
+
+		            Negation:
+
+		            $$
+			            (\exists f \in V)(\exists g \in V)(O(f,g) \xor \Omega(g,f))
+		            $$
+
+		      \item For all functions $f,g$ and $h$ in $V$, if $C_1 g(n)$ is an upper
+		            bound for $f(n)$ and $C_2 h(n)$ is an upper bound for $g(n)$, then
+		            $C_3 h(n)$ is an upper bound for $f(n)$ for all $n$ greater than $k$,
+		            with $n,k$ being positive integers, and $C_1,C_2, C_3$ real numbers.
+
+		            Negation:
+
+		            $$
+			            (\exists f \in V)(\exists g \in V)(\exists h \in V)
+			            ((O(f,g) \land O(g,h)) \land \lnot O(f,h))
+		            $$
+
+		      \item There exist functions $f$ and $g$ in $V$ such that $f(n)$ will be
+		            less than a real-numbered constant times $g(n)$ if $n$ is
+		            greater or equal to a lower bound $k$ and $g(n)$ will be
+		            less than a real-numbered constant times $f(n)$ if $n$ is
+		            greater or equal to a lower bound $k$, and $f$ is not equal to
+		            $g$ with $n,k$ being positive integers.
+
+		            Negation:
+
+		            $$
+			            (\forall f \in V)(\forall g \in V)
+			            (\lnot O(f,g) \lor \lnot \Omega(f,g) \lor (f = g))
+		            $$
+	      \end{enumerate}
+\end{enumerate}
+\end{document}

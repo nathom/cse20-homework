@@ -1,0 +1,308 @@
+\documentclass[10pt,letterpaper,unboxed,cm]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{enumerate, comment}
+\usepackage{adjustbox}
+
+\newcommand{\st}{~\mid~}
+\newcommand{\ind}{$~~~~~$}
+\usepackage[noend]{algpseudocode}
+\usepackage{algorithm,algorithmicx,amsmath,amssymb}
+
+
+\newcommand{\A}[0]{\texttt{A}}
+\newcommand{\C}[0]{\texttt{C}}
+\newcommand{\G}[0]{\texttt{G}}
+\newcommand{\U}[0]{\texttt{U}}
+
+\begin{document}
+
+
+\hfill{CSE 20 Winter 2022}
+
+\hfill{Homework 2}
+
+\hfill{Due date: Wednesday, Jan 19, 2021 at 11:59pm}
+
+
+
+{\bf In this assignment,}
+
+You will consider multiple number representations and how they connect to applications in computer science. You will also practice tracing and working with algorithms.
+
+
+
+
+
+
+\textbf{In this class, unless the instructions explicitly say otherwise, you are required to justify all your answers.}
+
+
+\begin{enumerate}
+	\item
+	      Let $S_4$ be the set of all strings that form \emph{base 4} expansions of positive integers.
+
+	      \begin{enumerate}
+		      \item
+		            Write a recursive definition for $S_4$:
+
+		            {\bf Basis Step:}
+
+		            {\bf Recursive Step:}
+
+
+		      \item
+		            Consider the function $f_4:S_4\to \mathbb{Z}^+$ that takes a \emph{base 4} string $u$ and returns the value of $u$ as a positive integer.
+
+		            Describe the function $f_4$ using a recursive definition.
+
+		      \item
+		            Consider the function $p_4:S_4\to \{0,1\}^*$ that takes a \emph{base 4} string $u$ and returns the binary expansion of $u$.
+
+		            Describe the function $p_4$ using a recursive definition.
+	      \end{enumerate}
+
+	\item
+	      Is there an advantage to use a different number system that is different than base 10? What number base would be the best? Some say base 12 makes the most sense. In fact, there is at least one organization whose purpose is to educate and advocate for society to adopt a base 12 number system: The Dozenal Society of America.
+
+	      For this problem, the allowable digits in decimal are $\{0,1,2,3,4,5,6,7,8,9\}$ and the allowable numerals for dozenal are $\{\emph{0,1,2,3,4,5,6,7,8,9,X,E}\}$ (Notice that the dozenal numerals are all in italics so that we know which number system we should be using.) The numeral $\emph{X}$ is called ``dek" which is equal to the number $10$ in decimal and the numeral $\emph{E}$ is called ``el" which is equal to the number $11$ in decimal.
+
+	      The number $\emph{10}$ is called ``do" which is short for ``dozen" which is equal to $12$ in decimal. The number $\emph{100}$ is called ``gro" which is short for ``gross" which is equal to 144 in decimal.
+
+	      For example, the number of stars in this string: $*********************$ can be described as $21=(21)_{10}$ (in decimal) or by $\emph{19}=(19)_{12}$ (in dozenal).
+
+	      One reason why dozenal is preferred over decimal is because the proper divisors of 12 = \emph{10} are $\{\emph{1,2,3,4,6}\}$ and the proper divisors of 10=\emph{X} are $\{1,2,5\}$. With more proper divisors, some aspects of arithmetic in dozenal is easier than in decimal.
+
+	      \begin{quote}
+		      {\bf Exercise 1:} (use any method. please show your work.)
+
+		      Convert each of the decimal numbers into dozenal: (show your work by tracing one of the two algorithms from class.)
+
+		      \begin{itemize}
+			      \item
+			            45
+			      \item
+			            999
+			      \item
+			            322
+		      \end{itemize}
+
+		      Convert each of the dozenal numbers into decimal:
+
+		      \begin{itemize}
+			      \item
+			            \emph{XX}
+			      \item
+			            \emph{2022}
+			      \item
+			            \emph{E00}
+		      \end{itemize}
+	      \end{quote}
+
+	      \begin{quote}
+		      {\bf Exercise 2:} (no justification, just the rule.)
+
+		      Describe a simple rule to determine if a dozenal number is divisible by \emph{2}.
+
+		      Describe a simple rule to determine if a dozenal number is divisible by \emph{3}.
+
+		      Describe a simple rule to determine if a dozenal number is divisible by \emph{4}.
+
+		      Describe a simple rule to determine if a dozenal number is divisible by \emph{6}.
+
+		      Describe a simple rule to determine if a dozenal number is divisible by \emph{8}.
+
+		      Describe a simple rule to determine if a dozenal number is divisible by \emph{E}.
+
+		      Describe a simple rule to determine if a dozenal number is divisible by \emph{10}.
+
+		      (Optional: are there any other rules you can come up with for dozenal numbers divisible by the remaining numerals $\{\emph{5,7,9,X}\}$?)
+	      \end{quote}
+
+	      Since dozenal is a positional number system, arithmetic can be done in the same manner as we learned in gradeschool.
+
+	      \begin{quote}
+		      {\bf Exercise 3:}
+
+		      Perform gradeschool addition on the two dozenal numbers: (you can upload a handwritten answer for this problem.)
+
+		      \begin{tabular}{ccccccc}
+			        &  & \emph{9} & \emph{5} & \emph{8} & \emph{E} & \emph{E} \\
+			      + &  & \emph{E} & \emph{5} & \emph{X} & \emph{7} & \emph{X} \\
+			      \hline
+			        &  &          &          &          &          &          \\
+		      \end{tabular}
+	      \end{quote}
+
+	      \begin{quote}
+		      {\bf Exercise 4:}
+
+		      Perform gradeschool multiplication on the two dozenal numbers: (you can upload a handwritten answer for this problem.)
+
+		      \begin{tabular}{ccccc}
+			               &  &  & \emph{E} & \emph{2} \\
+			      $\times$ &  &  & \emph{4} & \emph{X} \\
+			      \hline
+			               &  &  &          &          \\
+		      \end{tabular}
+	      \end{quote}
+
+	      Another benefit of dozenal is when you use it to represent fractional quantities.
+
+	      The analogous notation of a ``decimal point" is a ``dozenal semicolon". The way it works is similar to a decimal point.
+
+	      For example, the number $0.1$ is equal to the fraction $1/10$ and the number $\emph{0;1}$ is equal to the fraction $\emph{1/10}=1/12$. Similarly, $\emph{0;01=1/100}=1/144$ and $\emph{0;001=1/1000}=1/1728$.
+
+	      \begin{quote}
+		      {\bf Exercise 5:}
+
+		      For each decimal fraction, write the dozenal semicolon notation of the number. For example, for the fraction 1/2, the dozenal semicolon notation would be $\emph{0;6}$ since $1/2=6/12$.
+
+		      \begin{itemize}
+			      \item
+			            2/3
+			      \item
+			            1/6
+			      \item
+			            5/24
+			      \item
+			            8/27
+		      \end{itemize}
+	      \end{quote}
+
+	      \begin{quote}
+		      {\bf Exercise 6:} (for fair effort completeness:)
+
+		      What is one example (not mentioned in the homework) where you would prefer dozenal over decimal?
+
+		      What is one example (not mentioned in the homework) where you would prefer decimal over dozenal?
+	      \end{quote}
+
+
+	\item
+	      Suppose you are working security at a music event at Petco Park. The maximum capacity is 42445 people. Your job is to count the total number of people who enter and stop when that value gets to 42445.
+
+	      You are given a mechanical ``tally counter" (see picture.) A tally counter is a device such that every time you press a button, the value on the counter increments by 1. The value on the counter is displayed using a particular number of wheels, each wheel having 10 digits $\{0,\dots,9\}$.
+
+	      Your supervisor gives you a tally counter with 5 wheels. This is sufficient for your job since this tally counter can display any number between 00000 and 99999. The value 42445 is within this range so it will do the job. (A tally counter with 4 wheels would be insufficient because that can only count up to 9999.)
+
+	      If you change the number of characters on the wheel, then you may need more or fewer wheels for the job. For example, 5 wheels is insufficient if each wheel has 8 characters $\{1,\dots,7\}$ and the value is displayed in base 8. The reason it is insufficient is because it can only display numbers in the range $(00000)_8$ to $(77777)_8=32768$. You would need at least 6 wheels of size 8 for this job because that tally counter would go from $(000000)_8$ to $(777777)_8$ and $(777777)_8=262143$.
+
+	      Your supervisor buys the tally counters from the Tally Counter Store (TCS). TCS sells customizable tally counters. You can purchase a tally counter with as many wheels as you wish. Each wheel can have as many digits as you wish. The price of a tally counter is the number of wheels multiplied by the size of each wheel. So the tally counter in the example above has 5 wheels each of size 10. This amounts to \$50. A tally counter with 6 wheels each of size 8 would cost \$48. So you could save 2 dollars.)
+
+	      You would like to find the cheapest tally counter.
+
+	      \begin{quote}
+		      {\bf Exercise 1:}
+
+		      For each value in the set $\{2,3,4,5,6,7,8,9\}$, compute the price of the cheapest tally counter with that particular wheel size.
+
+			      {\bf Exercise 2:} (for fair effort completeness:)
+
+		      Is there a particular wheel size that will always give the optimal price? How does this relate to computer design? Is base 2 really the ``best" base to be using? why or why not?
+	      \end{quote}
+
+
+	\item ({\bf 20 points})
+	      Color in computer is often represented as a 3-tuple $(R,G,B)$ such that $R,G,B$ are each an integer ranging from 0 to 255.
+
+	      The $R$ value is the red component, the $G$ value green component and $B$, the blue component. For example: $(0,0,0)$ represents black and $(255,255,255)$ represents white.
+
+	      We can use hexadecimal (base 16) to represent each color. Recall that the allowable ``numerals" for base 16 are: $H=\{0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F\}$.
+	      Then since each component is a value between 0 and 255, we can use two hexadecimal numerals for each component. (This is because with two hexadecimal numerals, you can represent all integers between $(00)_{16,2}=0$ and $(FF)_{16,2}=255$.)
+
+	      A {\bf hex color} is an integer $n$ that has a base 16 \emph{fixed-width} 6 expansion:
+	      $$n = (r_1r_2g_1g_2b_1b_2)_{16,6}$$
+	      where $(r_1r_2)_{16,2}$ is the red component, $(g_1g_2)_{16,2}$, the green component, and $(b_1b_2)_{16,2}$, the blue component.
+
+
+	      \begin{enumerate}
+		      \item
+		            What is the red, green, and blue values each in base 10 of the hex color: $(53DAC7)_{16,6}$
+		      \item
+		            What is the {\bf hex color} that corresponds to the $(R,G,B)$ values of $(150,200,250)$?
+		      \item
+		            Convert the (base 10) integer 9999999 into hex color (a base 16 number with a fixed-width of 6.)
+		      \item
+		            {\bf 12-bit color} was used in the 80s on a few different computers. It is an integer $n$ that has a base 16 \emph{fixed-width} {\bf 3} expansion:
+		            $$n=(rgb)_{16,3}.$$
+
+		            (Recall that for this problem, $H=\{0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F\}$.)
+
+		            Consider the function ``color convert":
+		            $CC:$
+		            \begin{itemize}
+			            \item {\bf Domain:} the set of all fixed width {\bf 6} hexadecimal integers.
+			            \item {\bf Codomain:} the set of all fixed width {\bf 3} hexadecimal integers.
+			            \item {\bf Rule:} for any input $(r_1r_2g_1g_2b_1b_2)_{16,6}$,
+			                  $$CC((r_1r_2g_1g_2b_1b_2)_{16,6})=
+				                  (r_1g_1b_1)_{16,3}$$
+		            \end{itemize}
+
+		            \begin{enumerate}
+			            \item
+			                  Evaluate $CC((A43BBB)_{16,3})$. (You do not need to show your work.)
+			            \item
+			                  What is the output of the function $CC$ if the input is the hex color that corresponds to the (base 10) integer $502393$? (Please show your work.)
+		            \end{enumerate}
+	      \end{enumerate}
+
+
+	\item
+	      A standard way for computers to represent non-negative and negative integers $x$ using binary fixed-width $N$ is the \emph{2's complement} method $T_N(x)$.
+	      \begin{itemize}
+		      \item
+		            Non-negative integers $x$ with $0\leq x\leq 2^{N-1}-1$ are represented using ordinary fixed-width binary (e.g. Using 2's complement fixed-width 8, $T_{8}(30)=(00011110)_{2c,8}$) because $(11110)_2$ is equal to 30.
+		      \item Negative integers $x$ with $-2^{N-1} \leq x<0$ are represented by converting the sum $x+2^N$ into fixed width 8 binary.
+		            \begin{align*}
+			            T_{8}(-30) & = (11100010)_{2c,8}
+		            \end{align*}
+		            Because $2^{N}+(-30)+1 = 2^8-30 = 226$
+		            and $(11100010)_2$ is equal to 226.
+	      \end{itemize}
+
+	      \begin{enumerate}
+		      \item
+		            Convert each base 10 integer to \emph{2's complement} fixed-length 8: (no justification necessary)
+		            \begin{itemize}
+			            \item
+			                  81
+			            \item
+			                  -11
+			            \item
+			                  -108
+		            \end{itemize}
+		      \item
+		            Convert each \emph{2's complement} fixed-length 8 integer into a base 10 integer. (show your work on how you did the conversion.)
+		            \begin{itemize}
+			            \item
+			                  $(10101010)_{2c,8}$
+			            \item
+			                  $(11011011)_{2c,8}$
+			            \item
+			                  $(10001001)_{2c,8}$
+		            \end{itemize}
+		      \item
+		            One of the great things about \emph{2's complement} is that you can add positive and negative integers together using regular binary addition. The trick is to ignore the overflow.
+		            \begin{enumerate}
+			            \item
+			                  Recall that $T_{8}(30) = (00011110)_{2c,8}$ and $T_{8}(-30)=(11100010)_{2c,8}$. Write out the addition of $(00011110)_{2c,8}+(11100010)_{2c,8}$ and ignore the overflow. (Hint, you should get 0.)
+
+			                  \emph{you can neatly handwrite this part if you wish.}
+			            \item
+			                  Convert the numbers $T_8(-19)$ and $T_8(-93)$ and write out the gradeschool addition of the results and ignore the overflow. Then convert the result back to base 10.
+			                  \emph{you can neatly handwrite this part if you wish.}
+
+			            \item
+			                  You can also multiply together two integers together using regular multiplication:
+
+			                  Convert the numbers $T_8(-15)$ and $T_8(5)$ and write out the gradeschool multiplication of the results and ignore the overflow. Then convert the result back to base 10.
+			                  \emph{you can neatly handwrite this part if you wish.}
+
+
+		            \end{enumerate}
+
+
+	      \end{enumerate}
+\end{enumerate}
+\end{document}

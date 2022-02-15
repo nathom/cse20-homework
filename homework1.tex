@@ -1,0 +1,105 @@
+\newcommand{\A}[0]{\texttt{A}}
+\newcommand{\C}[0]{\texttt{C}}
+\newcommand{\G}[0]{\texttt{G}}
+\newcommand{\U}[0]{\texttt{U}}
+
+\documentclass{article}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\title{Homework 1}
+\author{Nathaniel Thomas \\ A17069898}
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+	\item
+	      \begin{enumerate}
+		      \item $\{ \A\A, \A\A\A, \A\C\A, \C\A\A, \C\A, \C\C\A \}$
+		      \item $\{ (\A, \A\A), (\C, \A\A), (\A, \A), (\C, \A), (\A, \C\A), (\C, \C\A)\}$
+		      \item $\{ ((\A, \A), \C), ((\C, \C), \C), ((\A, \A), \A), ((\C, \C), \A) \}$
+		      \item $\{ (-1, \A\A), (0, \A\A), (1, \A\A) \}$
+		      \item $\{9, 10, 11, 12, 13, 14, 15\}$
+		      \item $ \{ \A\U, \A\G, \C\U, \C\G, \U\U, \U\G, \G\U, \G\G \} $
+	      \end{enumerate}
+	\item
+	      Basis Step:
+	      \begin{align*}
+		      \text{rnafunc} & :  S \to \mathbb{Z}^+                           \\
+		      \text{If }     & b \in \{\A, \C\}      & \text{rnafunc}(b) & = 1 \\
+		      \text{If }     & b \in \{\U, \G\}      & \text{rnafunc}(b) & = 0 \\
+		      % \text{rnafunc}(\C) =  \text{rnafunc}(\G)                          & = 1 \\
+		      % \text{rnafunc}(\lambda) = \text{rnafunc}(\A) = \text{rnafunc}(\U) & = 0 \\
+	      \end{align*}
+	      Recursive Step:
+	      \begin{align*}
+		       & \text{If } s \in S \text{ and } b \in \{\A, \C, \U, \G\} & \text{rnafunc}(sb) = \text{rnafunc}(s) + \text{rnafunc}(b)
+		      % \text{rnafunc}(s) & =                                                                       \\
+		      % V                 & = \{ \text{rnafunc}(a) + \text{rnafunc}(b) \mid ab = s \land |a| = 1 \} \\
+		      %                   & \text{return } \sum_{x \in V} x                                         \\
+	      \end{align*}
+	\item
+	      \begin{enumerate}
+		      \item
+		            \begin{align*}
+			            dist(A, B) & = 3.4641016151377544 \\
+			            dist(A, C) & = 2.6457513110645907 \\
+			            dist(A, D) & = 4.0                \\
+			            dist(B, C) & = 1.7320508075688772 \\
+			            dist(B, D) & = 2.0                \\
+			            dist(C, D) & = 3.3166247903554    \\
+		            \end{align*}
+
+		            The closest are Users B and C, and the farthest are users A and D.
+
+		      \item
+		            \begin{align*}
+			            dot(A, A) & = (-1)^2 + 1^2 + (-1)^2 + 0^2 + 1^2 + 0^2 & = 4 \\
+			            dot(B, B) & = 1^2 + 0^2 + 0^2 + 1^2 + (-1)^2 + 1^2    & = 4 \\
+			            dot(C, C) & = 0^2 + 1^2 + (-1)^2 + 1^2 + (-1)^2 + 1^2 & = 5 \\
+			            dot(D, D) & = 1^2 + (-1)^2 + 1^2 + 0^2 + (-1)^2 + 0^2 & = 4 \\
+		            \end{align*}
+
+		      \item
+		            $$
+			            \frac{dot((-1,1,-1,0,1,0), (1,-1,1,0,-1,0))}{
+				            \sqrt{dot((-1,1,-1,0,1,0), (-1,1,-1,0,1,0))}
+				            \sqrt{dot((1,-1,1,0,-1,0), (1,-1,1,0,-1,0))}
+			            }
+		            $$
+		            $$
+			            = \frac{-4}{\sqrt{4}\sqrt{4}} = -1
+		            $$
+
+		            The rating of User A for every movie is -1 times that for User D.
+
+		      \item
+		            The distance between two users tells us how large the cumulative difference
+		            is for each movie. The cosine similarity tells us how much each user
+		            has in common. I like the cosine similarity metric better because I think
+		            it would be more useful for generating recommendations.
+
+	      \end{enumerate}
+
+	\item
+	      \begin{enumerate}
+		      \item dist(A, B) = 149.28496240412161
+		      \item Colors E and F have dist(E, F) = 47.7283982551269
+		      \item The distance formula is unreliable because the human eye does not
+		            percieve changes in the R, G, and B components uniformly, but the distance
+		            formula gives them equal weightings. A better way would be to scale the
+		            squared difference between each entry by a constant that can be found to be
+		            representative of human perception. \\
+
+		            $$
+			            betterdist((r_1, g_1, b_1), (r_2, g_2, b_2)) =
+		            $$
+		            $$
+			            \sqrt{c_1(r_1 - r_2)^2 + c_2(g_1 - g_2)^2 + (b_1 - b_2)^2}
+		            $$
+	      \end{enumerate}
+
+\end{enumerate}
+
+\end{document}

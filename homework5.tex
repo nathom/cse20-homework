@@ -1,0 +1,90 @@
+\documentclass{article}
+\newcommand{\R}{\mathbb{R}}
+\newcommand*\xor{\oplus}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\mult}{\textit{Multiples}}
+\usepackage{amsmath,amsfonts}
+\begin{document}
+\begin{enumerate}
+	\item \begin{enumerate}
+		      \item We can use the counterexample $x=6$. $x$ does not divide
+		            4, but it is even.
+		      \item We can use the counterexample $a=1, b=2, c=3$. $a+b = 3$ and
+		            $b + c = 5$, but $a+c = 4$, which is even.
+
+		      \item Towards a proof by universal generalization. We want to show
+		            $$
+			            \forall r \in \R (r^2 + r \text{ is even} \to r \notin \Z)
+		            $$
+
+		            We can rewrite the statement as
+
+		            $$
+			            r(r + 1)
+		            $$
+
+		            if $r \in \Z$, the statement must be even, since an even
+		            times an odd number is even. This proves the contrapositive
+
+		            $$
+			            r \in \Z \to r^2 + r \text{ is even}
+		            $$
+
+		      \item We want to disprove the claim, with a proof by contradiction. Assume the following
+		            is true.
+
+		            $$
+			            \exists a \in \Z^+ \exists b \in \Z^+ ( \sqrt{a + b} = \sqrt a + \sqrt b)
+		            $$
+
+		            With algebraic manipulations we get the following
+
+		            \begin{align*}
+			            (\sqrt{a + b})^2 & = (\sqrt a + \sqrt b)^2 \\
+			            a + b            & = a + 2 \sqrt{ab} + b   \\
+			            0                & = 2 \sqrt{ab}           \\
+		            \end{align*}
+
+		            Because $a$ and $b$ are postitive integers, the square root of
+		            their product must be positive, and 2 times that quantity must be too.
+	      \end{enumerate}
+
+	\item \begin{enumerate}
+		      \item We can prove the following with a witness. Let $x = 1$. This means the
+		            set of the multiples of $x = \Z^+$. Since the multiples of $y \in \Z^+$ are in $\Z^+$,
+		            the statement is true.
+
+		      \item We want to show the following
+
+		            $$
+			            \exists x \forall y (x = y \lor \textit{Multiples}(x)
+			            \not\subseteq \textit{Multiples}(y))
+		            $$
+
+		            Let $x = 1$. If $y = 1 = x$, then the first part of the statement is true. Let's
+		            now assume $y \ne 1$. WTS
+
+		            $$
+			            y \ne 1 \land
+			            \textit{Multiples}(1)
+			            \not\subseteq \textit{Multiples}(y)
+		            $$
+
+		            TODO
+
+		      \item We want to disprove, and show the following is true
+
+		            $$
+			            \exists x \exists y \forall z (\lnot (\mult(x) \cup \mult(y) = \mult(z)))
+		            $$
+
+					Let $x=2, y=3$, then we need to show that there is no $z$ such that $\mult(z)$
+					contains both 2 and 3, which is in $\mult(x) \cup \mult(y)$. By the definition
+					of multiplication, $z$ must be less than or equal to its lowest multiple. This leaves
+
+
+	      \end{enumerate}
+\end{enumerate}
+\end{document}
