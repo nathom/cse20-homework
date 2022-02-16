@@ -5,9 +5,27 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\mult}{\textit{Multiples}}
-\usepackage{amsmath,amsfonts}
+\usepackage{amsmath,amsfonts,amssymb}
+\newcommand{\qed}{\hfill\blacksquare}
 \usepackage{enumerate}
+
+\hbadness=100000000
+\hfuzz=100pt
+\title{Homework 5}
+\author{
+	Nathaniel Thomas\\
+	\texttt{A17069898}
+	\and
+	Brandon Szeto\\
+	\texttt{A17002478}
+	\and
+	Darren Yu\\
+	\texttt{A16760914}
+}
 \begin{document}
+
+\maketitle
+
 \begin{enumerate}
 	\item \begin{enumerate}
 		      \item We can use the counterexample $x=6$. $x$ does not divide
@@ -17,7 +35,7 @@
 
 		      \item Towards a proof by universal generalization. We want to show
 		            $$
-			            \forall r \in \R (r^2 + r \text{ is even} \to r \notin \Z)
+			            \forall r \in \R (r^2 + r \text{ is odd} \to r \notin \Z)
 		            $$
 
 		            We can rewrite the statement as
@@ -26,69 +44,99 @@
 			            r(r + 1)
 		            $$
 
-		            if $r \in \Z$, the statement must be even, since an even
-		            times an odd number is even. This proves the contrapositive
+		            \textbf{Case 1:} $r$ is even
+
+		            If $r$ is even, then $r$ times any number will also be even.
+
+		            \textbf{Case 2:} $r$ is odd
+
+		            If $r$ is odd, $r+1$ is even, and their product will be even.
+
+		            if $r \in \Z$, the statement must be even, since an even.
+		            This proves the contrapositive
 
 		            $$
 			            r \in \Z \to r^2 + r \text{ is even}
 		            $$
 
-		      \item We want to disprove the claim, with a proof by contradiction. Assume the following
+		      \item
+		            We want to disprove the claim with a proof by contradiction. Assume the following
 		            is true.
 
 		            $$
-			            \exists a \in \Z^+ \exists b \in \Z^+ ( \sqrt{a + b} = \sqrt a + \sqrt b)
+			            \exists a \exists b ( \sqrt{a + b} = \sqrt a + \sqrt b)
 		            $$
-
-		            With algebraic manipulations we get the following
 
 		            \begin{align*}
 			            (\sqrt{a + b})^2 & = (\sqrt a + \sqrt b)^2 \\
 			            a + b            & = a + 2 \sqrt{ab} + b   \\
 			            0                & = 2 \sqrt{ab}           \\
+			            0                & = ab                    \\
 		            \end{align*}
 
-		            Because $a$ and $b$ are postitive integers, the square root of
-		            their product must be positive, and 2 times that quantity must be too.
+		            The product of two integers can only be zero if one of them are zero.
+		            However, the domain was restricted to $\Z^+$, which means neither $a$ or $b$
+		            can be 0.
+
+		            Thus, we get a contradiction
+		            \begin{align*}
+			            \exists a \exists b ( \sqrt{a + b} & = \sqrt a + \sqrt b)   \\
+			                                               & \to (a = 0 \lor b = 0)
+			            \land \lnot (a = 0 \lor b = 0)
+		            \end{align*}
+
+		            $\qed$
+
 	      \end{enumerate}
 
 	\item \begin{enumerate}
-		      \item We can prove the following with a witness. Let $x = 1$. This means the
-		            set of the multiples of $x = \Z^+$. Since the multiples of $y \in \Z^+$ are in $\Z^+$,
-		            the statement is true.
+		      \item We can prove the following with a witness. Let $x = 1$.
 
-		      \item We want to show the following
+		            \begin{align*}
+			            \mult(1) & = \{1 \cdot n \mid n \in \Z^+\} \\
+			                     & = \{n \mid n \in \Z^+\}         \\
+			                     & = \Z^+
+		            \end{align*}
 
-		            $$
-			            \exists x \forall y (x = y \lor \textit{Multiples}(x)
-			            \not\subseteq \textit{Multiples}(y))
-		            $$
-
-		            Let $x = 1$. If $y = 1 = x$, then the first part of the statement is true. Let's
-		            now assume $y \ne 1$. WTS
+		            We want to show
 
 		            $$
-			            y \ne 1 \land
-			            \textit{Multiples}(1)
-			            \not\subseteq \textit{Multiples}(y)
+			            \forall a \{ a \in \mult(y) \to a \in \Z^+ \}
 		            $$
 
-		            TODO
+		            From the definition of set builder notation, all elements of $\mult(y)$
+		            are in $\Z^+$, so the second part of the implication is always true.
 
-		      \item We want to disprove, and show the following is true
+		            $\qed$
 
+		      \item Counterexample: Let $x=1$. There is no $y \ne 1$ that satisfies the statement.
+
+		      \item Counterexample: Let $x=2$ and $y=3$.
+		      \item Towards a proof of universal generalization, let $z = xy$. We want to show
 		            $$
-			            \exists x \exists y \forall z (\lnot (\mult(x) \cup \mult(y) = \mult(z)))
+			            \forall b ( b \in \mult(xy) \to b \in \mult(x) \land b \in \mult(y))
 		            $$
 
-		            Let $x=2, y=3$, then we need to show that there is no $z$ such that $\mult(z)$
-		            contains both 2 and 3, which is in $\mult(x) \cup \mult(y)$. By the definition
-		            of multiplication, $z$ must be less than or equal to its lowest multiple. This leaves
+		            where
+
+		            \begin{align*}
+			            \mult(x)  & = \{nx \mid n \in \Z^+ \}     \\
+			            \mult(y)  & = \{ny \mid n \in \Z^+ \}     \\
+			            \mult(xy) & = \{n_1xy \mid n_1 \in \Z^+\}
+		            \end{align*}
+
+		            If we let $n = n_1x$, we see that every element of $\mult(xy)$ is in
+		            $\mult(y)$ because the integers are closed under
+		            multiplication. Similarly if we let $n = n_1y$, we see
+		            that every element of $\mult(xy)$ is in $\mult(x)$.
+
+		            $\qed$
 
 	      \end{enumerate}
 
 	\item \begin{enumerate}[(i)]
-		      \item  We want to show
+		      \item We want to show
+
 		            $$
 			            \forall a (a \in T \to a \in \Z^+)
 		            $$
@@ -101,10 +149,44 @@
 			            \exists x \exists b (2x^2 = b^2)
 		            $$
 
-		            We assume this to be true.
+		            to show that the set is nonempty. We assume this to be true.
 
-		      \item
+		      \item We want to show
 
+		            $$
+			            \forall b (b^2 \text{ is even} \to b \text{ is even})
+		            $$
+
+		            We will prove the contrapositive
+
+		            $$
+			            \forall b (b \text{ is odd} \to b^2 \text{ is odd})
+		            $$
+
+		            By the definition of odd, $b$ can be written as $b = 2n + 1$, with $n \in \Z$.
+		            Squaring this quantity, we get
+
+		            \begin{align*}
+			            (2n + 1)^2 & = 4n^2 + 4n + 1    \\
+			                       & = 2(2n^2 + 2n) + 1 \\
+		            \end{align*}
+
+		            Since integers are closed under multiplication, $2n^2 + 2n \in \Z$,
+		            so the original statement is true.
+
+		            $\qed$
+
+		      \item Because multiplication by a positive integer increases a number's
+		            value, the equation $2c^2 = s^2$ implies $c^2 < s^2$.
+		            Because the function $f(x) = x^2$ strictly increases for
+		            $x \in \Z^+$, $c^2 < s^2 \to c < s$.
+
+		      \item Since $2c^2 = s^2$, $c \in T$. Because $s$ is the smallest element of
+		            $T$, $s \le c$.
+
+		      \item $$
+			            r  \equiv c < s \\
+		            $$
 	      \end{enumerate}
 \end{enumerate}
 \end{document}
